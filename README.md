@@ -12,12 +12,7 @@
 
 ## Overview
 
-The goal of **FastSTL** is to provide high-performance alternatives to commonly used C++ containers and utilities, such as `std::vector`, `std::map`, and more. FastSTL focuses on:
-- **Efficiency**: Reducing overhead and optimizing common operations.
-- **Flexibility**: Offering additional options for configuration and fine-tuning.
-- **Compatibility**: Maintaining an interface similar to the C++ standard library for easy integration.
-
-> **Note:** Each header file includes a detailed list of pros and cons to help users determine if the FastSTL version fits their use case.
+The goal of **FastSTL** is to provide high-performance alternatives to commonly used C++ containers and utilities, such as `std::vector` and more.
 
 ## Installation
 
@@ -30,7 +25,6 @@ git clone https://github.com/yourusername/FastSTL.git
 Include FastSTL headers in your project as you would with standard library headers:
 ```cpp
 #include "FastSTL/vector.hpp"
-#include "FastSTL/map.hpp"
 ```
 
 ## Usage
@@ -41,7 +35,7 @@ FastSTL headers can be used as direct replacements for their standard library co
 #include "FastSTL/vector.hpp"
 
 int main() {
-    FastSTL::vector<int> myVector;
+    fstl::vector<int> myVector;
     myVector.push_back(10);
     // Use as you would with std::vector
 }
@@ -52,41 +46,17 @@ int main() {
 ### `FastSTL/vector.hpp`
 An optimized version of `std::vector` with faster allocation strategies and improved performance on certain operations.
 
+![image](https://github.com/user-attachments/assets/20420ca6-06ff-4b97-be5f-9ee4da255685)
+
 - **Pros**:
   - Reduced allocation overhead for frequent push/pop operations.
-  - Optional parameters for more granular memory management.
+  - Faster speeds by removing unnecessary operations
 
 - **Cons**:
-  - May have slightly larger memory usage than `std::vector` for small datasets.
-  - Potentially slower compile times due to additional template complexity.
+  - Less functions as of now, emplace, insert for example are not working as of now
+  - Less error handling
 
 ---
-
-### `FastSTL/map.hpp`
-An alternative to `std::map` designed with optimized insertion and retrieval times.
-
-- **Pros**:
-  - Faster insertion for large datasets.
-  - Customizable comparison and hashing options for advanced use cases.
-
-- **Cons**:
-  - May not support all `std::map` features in the initial release.
-  - Larger binary size due to additional optimizations.
-
----
-
-### `FastSTL/algorithm.hpp`
-Improved versions of selected standard library algorithms with a focus on reducing complexity and improving runtime for large inputs.
-
-- **Pros**:
-  - More efficient sorting and searching algorithms for specific data types.
-  - Additional options for parallel processing (requires C++17 or higher).
-
-- **Cons**:
-  - Parallel algorithms may increase memory usage.
-  - Limited to specific data types and conditions for some optimizations.
-
-*(Continue adding descriptions for other headers as they are developed.)*
 
 ## Contributing
 
