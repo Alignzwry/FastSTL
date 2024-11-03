@@ -4,6 +4,12 @@
 #include <new>  // For placement new
 #include "global.h"
 
+#if defined(_MSC_VER)
+#define FINLINE __forceinline
+#else
+#define FINLINE inline constexpr
+#endif // MSVC
+
 FSTL_BEGIN
 #define DEFAULT_SIZE 4
 
@@ -116,7 +122,8 @@ public:
 	__forceinline void resize(int size) {
 		T* oldData = this->m_pData;
 		_alloc(size);
-		for (int i = 0; i < this->m_iSize < size ? this->m_iSize : size; ++i) {
+		int minSize = (this->m_iSize < size) ? this->m_iSize : size;
+		for (int i = 0; i < minSize; ++i) {
 			new (&this->m_pData[i]) T(std::move(oldData[i]));
 			oldData[i].~T();
 		}
@@ -170,11 +177,6 @@ public:
 			m_pData[i].~T();
 		}
 		this->m_iSize = 0;
-	}
-
-	__forceinline void dealloc() {
-		this->m_iSize = 0;
-		_free();
 	}
 
 	__forceinline void erase(int index) {
