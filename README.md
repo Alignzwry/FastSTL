@@ -1,6 +1,3 @@
-Here's a basic structure for your `README.md` file. This version is ready for you to expand upon with descriptions, pros, and cons as you complete each header file:
-
-```markdown
 # FastSTL
 
 **FastSTL** is a collection of optimized C++ headers, reimplementing and enhancing standard library containers and algorithms to achieve better performance in performance-critical applications. Each header in FastSTL is designed to replace its standard library counterpart with an emphasis on speed, memory efficiency, and improved functionality where possible.
