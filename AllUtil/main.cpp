@@ -1,13 +1,13 @@
 #include <vector>
-#include "vector.h"
 #include <Windows.h>
 #include <iostream>
 #include <chrono>
+#include "include/FastSTL/vector.h"
 
 int main() {
 	// Test performance
-	std::vector<int> vec1 = { 0, 0, 0, 0, 100, 0 };
-	vector<int> vec2 = { 100, 14234, 123, 5342, 123, 531 };
+	std::vector<int> vec1 = { 100, 14234, 123, 5342, 123, 531 };
+	fstl::vector<int> vec2 = { 100, 14234, 123, 5342, 123, 531 };
 
 	long long vec1_time = 0;
 	long long vec2_time = 0;
@@ -33,7 +33,7 @@ int main() {
 		}
 	}
 	vec2_time = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - start_time).count();
-	std::cout << "2. vector: " << vec2_time / 1000000 << " ms" << std::endl;
+	std::cout << "2. fstl::vector: " << vec2_time / 1000000 << " ms" << std::endl;
 
 	ratio = vec1_time / vec2_time;
 
@@ -51,7 +51,7 @@ int main() {
 		auto ret = vec2;
 	}
 	vec2_time = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - start_time).count();
-	std::cout << "2. vector: " << vec2_time / 1000000 << " ms" << std::endl;
+	std::cout << "2. fstl::vector: " << vec2_time / 1000000 << " ms" << std::endl;
 
 	ratio += vec1_time / vec2_time;
 
@@ -72,7 +72,7 @@ int main() {
 		vec2.pop_back();
 	}
 	vec2_time = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - start_time).count();
-	std::cout << "2. vector: " << vec2_time / 1000000 << " ms" << std::endl;
+	std::cout << "2. fstl::vector: " << vec2_time / 1000000 << " ms" << std::endl;
 
 	ratio += vec1_time / vec2_time;
 
@@ -93,7 +93,7 @@ int main() {
 		vec2.push_back(10);
 	}
 	vec2_time = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - start_time).count();
-	std::cout << "2. vector: " << vec2_time / 1000000 << " ms" << std::endl;
+	std::cout << "2. fstl::vector: " << vec2_time / 1000000 << " ms" << std::endl;
 
 	ratio += vec1_time / vec2_time;
 

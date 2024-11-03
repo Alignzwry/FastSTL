@@ -2,7 +2,9 @@
 #include <initializer_list>
 #include <assert.h>
 #include <new>  // For placement new
+#include "global.h"
 
+FSTL_BEGIN
 #define DEFAULT_SIZE 4
 
 #define _alloc(size) { \
@@ -196,3 +198,4 @@ private:
 	int m_iSize = 0;
 	int m_iAllocated = 0;
 };
+FSTL_END

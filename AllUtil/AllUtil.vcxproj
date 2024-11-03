@@ -144,7 +144,8 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="vector.h" />
+    <ClInclude Include="include\FastSTL\global.h" />
+    <ClInclude Include="include\FastSTL\vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

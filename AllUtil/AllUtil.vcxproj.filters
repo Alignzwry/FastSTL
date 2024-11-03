@@ -20,7 +20,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="vector.h">
+    <ClInclude Include="include\FastSTL\vector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FastSTL\global.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
