@@ -28,7 +28,7 @@ FSTL_BEGIN
         this->m_iAllocated = temp; \
 }
 
-#define _realloc { \
+#define _realloc() { \
     T* oldData = this->m_pData; \
     calcGrowth; \
     _alloc(this->m_iAllocated); \
@@ -54,7 +54,7 @@ public:
 	}
 
 	vector(int size) {
-		_alloc(size)
+		_alloc(size);
 	}
 
 	vector(const vector<T>& v) {
@@ -113,6 +113,36 @@ public:
 	}
 
 	// Functions
+	__forceinline void resize(int size) {
+		T* oldData = this->m_pData;
+		_alloc(size);
+		for (int i = 0; i < this->m_iSize < size ? this->m_iSize : size; ++i) {
+			new (&this->m_pData[i]) T(std::move(oldData[i]));
+			oldData[i].~T();
+		}
+		free(oldData);
+		for (int i = this->m_iSize; i < size; ++i) {
+			new (&this->m_pData[i]) T();
+		}
+
+		this->m_iSize = size;
+	}
+
+	__forceinline void reserve(int size) {
+		assert(size > this->m_iSize);
+
+		T* oldData = this->m_pData;
+		_alloc(size);
+
+		for (int i = 0; i < this->m_iSize; ++i) {
+			new (&this->m_pData[i]) T(std::move(oldData[i]));
+			oldData[i].~T();
+		}
+
+		free(oldData);
+		this->m_iAllocated = size;
+	}
+
 	__forceinline T& at(int index) {
 		assert(index >= 0 && index < this->m_iSize);
 		return this->m_pData[index];
@@ -125,7 +155,7 @@ public:
 
 	__forceinline void push_back(const T& item) {
 		if (this->m_iSize == this->m_iAllocated) {
-			_realloc;
+			_realloc();
 		}
 		new (&this->m_pData[this->m_iSize++]) T(item);
 	}
