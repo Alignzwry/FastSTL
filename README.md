@@ -65,6 +65,3 @@ Contributions are welcome! If you have ideas for improvements or additional feat
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
-
-This structure includes a section for each header where you can elaborate on the pros and cons. You can keep updating it as you add more files and functionalities to the repository.
