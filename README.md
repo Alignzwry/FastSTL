@@ -55,6 +55,7 @@ An optimized version of `std::vector` with faster allocation strategies and impr
 - **Cons**:
   - Less functions as of now, emplace, insert for example are not working as of now
   - Less error handling
+  - No resizing when vector gets smaller, you can use `fix_size()` to resize the vectors allocated memory to it's size
 
 ---
 
