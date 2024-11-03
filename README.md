@@ -61,7 +61,7 @@ An optimized version of `std::vector` with faster allocation strategies and impr
 
 ## Contributing
 
-Contributions are welcome! If you have ideas for improvements or additional features, feel free to open an issue or submit a pull request. Please make sure to follow the [contribution guidelines](CONTRIBUTING.md).
+Contributions are welcome! If you have ideas for improvements or additional features, feel free to open an issue or submit a pull request.
 
 ## License
 
